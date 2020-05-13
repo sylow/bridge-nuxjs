@@ -1,0 +1,25 @@
+{
+  "name": "bridge",
+  "version": "1.0.0",
+  "description": "My finest Nuxt.js project",
+  "author": "Gokhan Arli",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@mdi/font": "^5.1.45",
+    "@nuxtjs/bulma": "^1.2.1",
+    "alertifyjs": "^1.13.1",
+    "axios": "^0.19.2",
+    "lodash": "^4.17.15",
+    "nuxt": "^2.0.0",
+    "nuxt-material-design-icons": "^1.0.4"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^0.6.0"
+  }
+}
