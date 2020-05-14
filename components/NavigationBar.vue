@@ -15,7 +15,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/">Dashboard</nuxt-link>
-        <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/practice">Practice</nuxt-link>
+        <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/practice">Practice Deals</nuxt-link>
         <nuxt-link v-if="isAuthenticated" class="navbar-item" to="{ name: 'dashboard'}">Tables</nuxt-link>
 
       </div>

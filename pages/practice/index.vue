@@ -3,9 +3,10 @@
     <div class='column'>
         
       <div v-for="index in numberOfHands" :key="index" class='notification'>
-        <div class="tags has-addons is-pulled-right">
-          <span class="tag is-dark">{{index}}</span>
-           <i class="tag is-info mdi mdi-plus"></i>
+        <div class="is-pulled-right">
+          <span class="tag icon is-large">
+              <a class="mdi mdi-24px mdi-bookmark-plus-outline" @click="saveTo(index)"></a>
+          </span>          
         </div>
         <div class='columns'>         
           <div class='column is-offset-2 is-4'>
@@ -68,12 +69,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions('practice', ['new']),  
+    ...mapActions('practice', ['new', 'bookmark']),  
     dealIt: function(){
       this.new({range: this.range})
     },
-    goto: function(page){
-      this.handId = page
+
+    saveTo: function(index){
+      this.bookmark({ index: index })
     }
   },
   components: { Hand }

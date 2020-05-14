@@ -22,6 +22,14 @@ export const actions = {
     })
     .then(response => (commit('new', response.data)))   
   },  
+
+  bookmark ({ commit, state }, { index }) {
+    axios
+    .post('/api/v1/practices/bookmark', {
+      deal: state.deals[index]
+    })
+    .then(response => (commit('bookmark', index)))     
+  }
 }
 
 export const mutations = {
@@ -29,4 +37,8 @@ export const mutations = {
     state.deals = payload.deals
     state.uuid  = payload.uuid
   },
+
+  bookmark (state, payload){
+
+  }
 }
