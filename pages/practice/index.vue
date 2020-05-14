@@ -9,10 +9,10 @@
           </span>          
         </div>
         <div class='columns'>         
-          <div class='column is-offset-2 is-4'>
+          <div class='column is-6'>
             <Hand seat='west' :handId="index-1"/>          
           </div>  
-          <div class='column is-4'>
+          <div class='column is-6'>
             <Hand seat='east' :handId="index-1"/>          
           </div>    
         </div>
@@ -25,7 +25,7 @@
           1 NT
         </label>
         <label class="radio">
-          <input type="radio" name="range" v-model="range" value="20..21">
+          <input type="radio" name="range" v-model="range" value="20..22">
           2 NT
         </label>
         <label class="radio">
@@ -69,13 +69,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions('practice', ['new', 'bookmark']),  
+    ...mapActions('practice', ['generate', 'add']),  
     dealIt: function(){
-      this.new({range: this.range})
+      this.generate({range: this.range})
     },
 
     saveTo: function(index){
-      this.bookmark({ index: index })
+      this.add({ index: index })
     }
   },
   components: { Hand }

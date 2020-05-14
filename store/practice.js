@@ -15,30 +15,30 @@ export const getters = {
 }
 
 export const actions = { 
-  new ({ commit }, { range } ) {
+  generate ({ commit }, { range } ) {
     axios
-    .post('/api/v1/practices', {
+    .post('/api/v1/practices/generate', {
       range: range
     })
-    .then(response => (commit('new', response.data)))   
+    .then(response => (commit('generate', response.data)))   
   },  
 
-  bookmark ({ commit, state }, { index }) {
+  add ({ commit, state }, { index }) {
     axios
-    .post('/api/v1/practices/bookmark', {
+    .post('/api/v1/lists/add', {
       deal: state.deals[index]
     })
-    .then(response => (commit('bookmark', index)))     
+    .then(response => (commit('add', index)))     
   }
 }
 
 export const mutations = {
-  new (state, payload){
+  generate (state, payload){
     state.deals = payload.deals
     state.uuid  = payload.uuid
   },
 
-  bookmark (state, payload){
+  add (state, payload){
 
   }
 }
