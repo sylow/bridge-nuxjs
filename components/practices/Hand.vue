@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 const _ = require('lodash');
 
 export default {
@@ -51,7 +51,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('practice', ['deals']),
+    ...mapState({ deals: state => state.practice.deals }),
     hand: function () {
       if (_.isEmpty(this.deals)) return {};
       return _.find(this.deals[this.handId].hands, {seat: this.seat});

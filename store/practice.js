@@ -3,24 +3,18 @@ const axios = client.create({
   baseURL: 'http://localhost:3001/',
 });
 
+import { Sample, Hand, Deck } from '~/lib/deal';
+
 export const state = () => ({
   deals: [],
-  uuid: null,
 })
-
-// getters are functions.
-export const getters = {
-  deals: state => state.deals,
-  uuid: state => state.uuid,
-}
 
 export const actions = { 
   generate ({ commit }, { range } ) {
-    axios
-    .post('/api/v1/practices/generate', {
-      range: range
-    })
-    .then(response => (commit('generate', response.data)))   
+    var sample = new Sample(range);
+    sample.generate()
+    commit('generate', sample)
+
   },  
 
   add ({ commit, state }, { index }) {
@@ -35,7 +29,6 @@ export const actions = {
 export const mutations = {
   generate (state, payload){
     state.deals = payload.deals
-    state.uuid  = payload.uuid
   },
 
   add (state, payload){

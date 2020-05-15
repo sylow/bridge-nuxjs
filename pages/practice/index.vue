@@ -1,63 +1,52 @@
 <template>
   <div class='columns'>    
     <div class='column'>
-        
-      <div v-for="index in numberOfHands" :key="index" class='notification'>
-        <div class="is-pulled-right">
-          <span class="tag icon is-large">
-              <a class="mdi mdi-24px mdi-bookmark-plus-outline" @click="saveTo(index)"></a>
-          </span>          
-        </div>
-        <div class='columns'>         
-          <div class='column is-6'>
-            <Hand seat='west' :handId="index-1"/>          
-          </div>  
-          <div class='column is-6'>
-            <Hand seat='east' :handId="index-1"/>          
-          </div>    
+      <div class="buttons has-addons">
+        <button class="button" @click="dealIt('15..17')">1 NT</button>
+        <button class="button" @click="dealIt('20..21')">2 NT</button>
+        <button class="button" @click="dealIt('23..40')">2 <i class='mdi mdi-cards-club'></i></button>
+        <button class="button" @click="dealIt('0..40')">Random</button>
+      </div> 
+      <br/>
+      <div class='columns is-multiline'>    
+        <div class='column is-6' v-for="index in numberOfHands" :key="index" >
+          <div class='notification'>
+            <div class="is-pulled-right">
+              <span class="tag icon is-large">
+                  <a class="mdi mdi-24px mdi-bookmark-plus-outline" @click="saveTo(index)"></a>
+              </span>          
+            </div>
+            <div class='columns'>         
+              <div class='column is-6'>
+                <Hand seat='west' :handId="index-1"/>          
+              </div>  
+              <div class='column is-6'>
+                <Hand seat='east' :handId="index-1"/>          
+              </div>    
+            </div>
+          </div>
         </div>
       </div>
     </div>    
-    <div class='column'>
-      <div class="control">
-        <label class="radio">
-          <input type="radio" name="range" v-model="range" value="15..17">
-          1 NT
-        </label>
-        <label class="radio">
-          <input type="radio" name="range" v-model="range" value="20..22">
-          2 NT
-        </label>
-        <label class="radio">
-          <input type="radio" name="range" v-model="range" value="23..40">
-          2 <i class='mdi mdi-cards-club'></i>
-        </label>
-        <label class="radio">
-          <input type="radio" name="range" v-model="range">
-          Random
-        </label>        
-        <button class='button' @click="dealIt">Deal Practice Hands</button><br/>
-      </div>  
-      
-      {{uuid}}  
-    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import Hand from '~/components/practices/Hand';
 const _ = require('lodash');
 export default {
   name: 'Dashboard',
   data(){
     return {
-      range: '15..17',
+      range: '0..40',
       handId: 1,
     }
   },
   computed: {
-    ...mapGetters('practice', ['deals']),
+    ...mapState({
+      deals: state => state.practice.deals
+    }),
     numberOfHands: function(){
       if (_.isEmpty(this.deals)) return 0;
       return this.deals.length;
@@ -70,8 +59,8 @@ export default {
   },
   methods: {
     ...mapActions('practice', ['generate', 'add']),  
-    dealIt: function(){
-      this.generate({range: this.range})
+    dealIt: function(range){
+      this.generate({range: range})
     },
 
     saveTo: function(index){
