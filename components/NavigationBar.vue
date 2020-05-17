@@ -14,18 +14,18 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/">Dashboard</nuxt-link>
-        <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/practice">Practice Deals</nuxt-link>
-        <nuxt-link v-if="isAuthenticated" class="navbar-item" to="{ name: 'dashboard'}">Tables</nuxt-link>
+        <!-- <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/">Dashboard</nuxt-link> -->
+        <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/practice">Bidding Practice</nuxt-link>
+        <!-- <nuxt-link v-if="isAuthenticated" class="navbar-item" to="{ name: 'lists'}">Lists</nuxt-link> -->
 
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <nuxt-link v-if="!isAuthenticated" class="button is-dark" to="/auth/sign-up">Sign up</nuxt-link>
+            <!-- <nuxt-link v-if="!isAuthenticated" class="button is-dark" to="/auth/sign-up">Sign up</nuxt-link> -->
             <nuxt-link v-if="!isAuthenticated" class="button is-dark" to="/auth/sign-in">Sign in</nuxt-link>
-            <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/user/friends">Friends</nuxt-link>            
+            <!-- <nuxt-link v-if="isAuthenticated" class="navbar-item" to="/user/friends">Friends</nuxt-link>             -->
             <a v-if="isAuthenticated" class="navbar-item" @click="logout">Logout</a>
           </div>
         </div>
