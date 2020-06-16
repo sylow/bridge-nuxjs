@@ -1,6 +1,6 @@
 const client = require('axios');
 const axios = client.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'http://localhost:3000/',
 });
 
 import { Sample, Hand, Deck } from '~/lib/deal';
