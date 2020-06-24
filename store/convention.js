@@ -12,7 +12,12 @@ export const actions = {
     axios
     .get('/api/v1/conventions')
     .then(response => (commit('list', response)))     
-  }
+  },
+  create({ commit, dispatch }, { name }){
+    axios
+    .post('/api/v1/conventions', { name } )
+    .then(response => (dispatch('list')))     
+  },
 }
 
 export const mutations = {
